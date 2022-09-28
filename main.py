@@ -6,10 +6,10 @@ from dotenv import load_dotenv
 def create_bitlink(url, token):
 
     headers = {'Authorization': f'Bearer {token}'}
-    data = {'long_url': url}
+    post_data = {'long_url': url}
     response = requests.post(f'https://api-ssl.bitly.com/v4/bitlinks',
                              headers=headers,
-                             json=data)
+                             json=post_data)
    
     response.raise_for_status()
     return response.json()['id']
