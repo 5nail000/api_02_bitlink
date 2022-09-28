@@ -1,7 +1,7 @@
 # Обрезка ссылок с помощью Битли
 
-Скрипт принимает произвольную ссылку и при помощи сервиса **[bitly.com](https://bitly.com/)** например: **https://www.youtube.com/watch?v=PXQ4OFT5UCk**
-и преобразовывает её в короткую ссылку вида **[bit.ly/3QvQfad](https://bit.ly/3QvQfad)**
+Скрипт принимает произвольную ссылку (например: **https://www.youtube.com/watch?v=PXQ4OFT5UCk**) и при помощи сервиса **[bitly.com](https://bitly.com/)**
+преобразовывает её в короткую ссылку вида **[bit.ly/3QvQfad](https://bit.ly/3QvQfad)**
 
 Если же, скрипт получает ссылку-битли, то в таком случае он выведет количество совершённых по этой ссылке переходов.
 
@@ -9,7 +9,21 @@
 
 - Python3 должен быть уже установлен.
 - Для удобства реккомендуется установить виртуальное окружение ([ссылка на руководство](https://fixmypc.ru/post/sozdanie-virtualnogo-okruzheniia-v-python-3-s-venv-i-virtualenv/?ysclid=l7udz3aqdd57938214#efd7))
-- Установите зависимости командой `pip install -r requirements.txt`
+- Установите зависимости командой
+```
+pip install -r requirements.txt
+```
+
+### Переменные Окружения
+Имя переменной для хранения токена - '**BITLY_TOKEN**'
+
+<sup>* Нужно быть зарегистртированным пользователем сервиса **[bitly.com](https://bitly.com/)**, что бы получить API-токен (https://app.bitly.com/settings/api/)</sup>
+
+### Запуск
+Запускается в терминале/коммандной строке файл '**main.py**'
+```
+python3 main.py
+```
 
 ### Цели проекта
 
