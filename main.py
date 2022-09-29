@@ -45,8 +45,7 @@ def main():
     token = os.getenv('BITLY_TOKEN')
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("user_link", type=str, default="",
-                        help="link for bitly service")
+    parser.add_argument("user_link", help="link for bitly service")
 
     args = parser.parse_args()
     link = f'{urlparse(args.user_link).netloc}{urlparse(args.user_link).path}'
