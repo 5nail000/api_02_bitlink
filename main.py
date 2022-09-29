@@ -8,11 +8,11 @@ import argparse
 def create_bitlink(url, token):
 
     headers = {'Authorization': f'Bearer {token}'}
-    post_data = {'long_url': url}
+    url = {'long_url': url}
     response = requests.post(
         f'https://api-ssl.bitly.com/v4/bitlinks',
         headers=headers,
-        json=post_data
+        json=url
     )
     response.raise_for_status()
     return response.json()['id']
