@@ -14,8 +14,10 @@
 pip install -r requirements.txt
 ```
 
-### Переменные Окружения
-Имя переменной для хранения токена - '**BITLY_TOKEN**'
+### .ENV (Переменные Окружения)
+```
+BITLY_TOKEN=токен
+```
 
 <sup>* Нужно быть зарегистртированным пользователем сервиса **[bitly.com](https://bitly.com/)**, что бы получить API-токен (https://app.bitly.com/settings/api/)</sup>
 
