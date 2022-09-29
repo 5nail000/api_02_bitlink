@@ -22,7 +22,7 @@ def count_clicks(link, token):
 
     headers = {'Authorization': f'Bearer {token}'}
     response = requests.get(
-        f'https://api-ssl.bitly.com/v4/bitlinks/{urlparse(link).netloc}{urlparse(link).path}/clicks/summary',
+        f'https://api-ssl.bitly.com/v4/bitlinks/{link}/clicks/summary',
         headers=headers
     )
     response.raise_for_status()
@@ -33,7 +33,7 @@ def is_bitlink(link, token):
 
     headers = {'Authorization': f'Bearer {token}'}
     response = requests.get(
-        f'https://api-ssl.bitly.com/v4/bitlinks/{urlparse(link).netloc}{urlparse(link).path}',
+        f'https://api-ssl.bitly.com/v4/bitlinks/{link}',
         headers=headers
     )
     return response.ok
@@ -48,16 +48,14 @@ def main():
     parser.add_argument("user_link", type=str, default="",
                         help="link for bitly service")
 
-    try:
-        args = parser.parse_args()
-    except:
-        print('Argument is missing, needs link as argument')
+    args = parser.parse_args()
+    link = f'{urlparse(args.user_link).netloc}{urlparse(args.user_link).path}'
+
+    if is_bitlink(link, token):
+        print(
+            f'Количество переходов по ссылке битли: {(count_clicks(link, token))}')
     else:
-        if is_bitlink(args.user_link, token):
-            print(
-                f'Количество переходов по ссылке битли: {(count_clicks(args.user_link, token))}')
-        else:
-            print(create_bitlink(args.user_link, token))
+        print(create_bitlink(args.user_link, token))
 
 
 if __name__ == '__main__':
