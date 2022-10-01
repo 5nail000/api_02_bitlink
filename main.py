@@ -47,11 +47,11 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("user_link", help="link for bitly service")
     args = parser.parse_args()
-    link = f'{urlparse(link).netloc}{urlparse(link).path}'
+    prepared_link = f'{urlparse(args.user_link).netloc}{urlparse(args.user_link).path}'
 
-    if is_bitlink(link, token):
+    if is_bitlink(prepared_link, token):
         print(
-            f'Количество переходов по ссылке битли: {(count_clicks(link, token))}')
+            f'Количество переходов по ссылке битли: {(count_clicks(prepared_link, token))}')
     else:
         print(create_bitlink(args.user_link, token))
 
