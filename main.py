@@ -42,12 +42,13 @@ def is_bitlink(link, token):
 def main():
 
     load_dotenv()
-
     token = os.getenv('BITLY_TOKEN')
+
     parser = argparse.ArgumentParser()
     parser.add_argument("user_link", help="link for bitly service")
     args = parser.parse_args()
-    prepared_link = f'{urlparse(args.user_link).netloc}{urlparse(args.user_link).path}'
+    parsed_link = urlparse(args.user_link)
+    prepared_link = f'{parsed_link.netloc}{parsed_link.path}'
 
     if is_bitlink(prepared_link, token):
         print(
